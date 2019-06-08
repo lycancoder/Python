@@ -33,6 +33,7 @@ def usr_login():
     usr_name = var_usr_name.get()
     usr_pwd = var_usr_pwd.get()
 
+    # 账户文件不存在，创建一个默认admin用户
     try:
         with open('usr_info.pickle', 'rb') as usr_file:
             usr_info = pk.load(usr_file)
@@ -41,6 +42,7 @@ def usr_login():
             usr_info = {'admin': 'admin'}
             pk.dump(usr_info, usr_file)
 
+    # 判断登录账户
     if usr_name in usr_info:
         if usr_pwd == usr_info[usr_name]:
             msg.showinfo(title='Welcome', message='How are you? ' + usr_name)
