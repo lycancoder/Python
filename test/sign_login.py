@@ -4,6 +4,7 @@ import pickle as pk
 
 # 创建窗口
 window = tk.Tk()
+window.resizable(width=False, height=False)
 window.title('Welcome to ly Python')
 
 # 获取显示屏宽高(分辨率)，设置窗口宽高，保证窗口居中
@@ -13,7 +14,7 @@ window.geometry('%dx%d+%d+%d' % (wc_width, wc_height, (ws_width-wc_width)/2, (ws
 
 # 创建画布，存放图片
 canvas = tk.Canvas(window, height=200, width=450)
-image_file = tk.PhotoImage(file='welcome.gif')
+image_file = tk.PhotoImage(file='welcome.png')
 image = canvas.create_image(0, 0, anchor='nw', image=image_file)
 canvas.pack(side='top')
 
@@ -75,8 +76,9 @@ def usr_sign_up():
 
     # 在window窗口上层再创建一个注册窗口
     window_sign_up = tk.Toplevel(window)
-    nwc_width, nwc_height = 450, 300
+    window_sign_up.resizable(width=False, height=False)
     window_sign_up.title('Sign up window')
+    nwc_width, nwc_height = 450, 300
     window_sign_up.geometry('%dx%d+%d+%d' % (nwc_width, nwc_height, (ws_width-nwc_width)/2, (ws_height-nwc_height)/2))
 
     new_name = tk.StringVar()
